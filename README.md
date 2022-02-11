@@ -235,7 +235,7 @@ variable or set for google bucket or aws s3 as storage back end.
 Deploy using local directory:
 ```
 pumpwood-auth-app:
-  image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
+  image: andrebaceti/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
   environment:
     - STORAGE_TYPE=local
     - STORAGE_LOCAL_PATH=media/
@@ -249,7 +249,7 @@ pumpwood-auth-app:
 Deploy using AWS S3:
 ```
 pumpwood-auth-app:
-  image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
+  image: andrebaceti/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
   environment:
     - STORAGE_TYPE=aws_s3
     - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
@@ -260,7 +260,7 @@ pumpwood-auth-app:
 Deploy using google bucket:
 ```
 pumpwood-auth-app:
-  image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
+  image: andrebaceti/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
   environment:
     - STORAGE_TYPE=google_bucket
     - STORAGE_BUCKET_NAME=$STORAGE_BUCKET_NAME

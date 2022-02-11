@@ -2,34 +2,26 @@
 
 The objective of this app is to help sampling and organizing the acquisition
 of images to train AI models. It has a android app that is associated with
-and can be download thought the [Google Store ](https//caminhoa para a loja da googre).
+and can be download thought the [Google Store (soon)]().
 
 # Usage
+It is implemented using Django admin, and can be accessed using path `admin/pumpwood-auth-app/gui/`. Pumpwood is a web development framework created by Murabei, and helps to standardize the microservice communication (that is why the path...). It is possible to interact with the Photo Sampler using API, Web Interface and the App.
 
-It is implemented using Django admin, and can be accessed using path `admin/pumpwood-auth-app/gui/`.
-Pumpwood is a web development framework created by Murabei, and helps to
-standardize the microservice communication (that is why the path...). It is
-possible to interact with the Photo Sampler using API, Web Interface and
-the App.
-
-<figure>
+<figure align="center">
 
 ![App Schema](docs/app_schema.png?raw=true)
 
 <figcaption align = "center">
-  <b>AI Photo Sampler can be used thought api, web interface and an Android app.</b>
+  <b>AI Photo Sampler can be used thought api, web interface and using an Android app.</b>
 </figcaption>
 
 
 </figure>
 
 ## API
-The API can be used to register the photos that will be taken
-at some experiment prior to the acquisition. This helps to better
-organize the image sampling and also add extra information that can be used at model training such as numerical e categorical  data. It is also possible to add dimensions to the images with a key/valeu json field to help searching the images.
+The API can be used to register the photos that will be taken at some experiment prior to the acquisition. This helps to better organize the image sampling and also add extra information that can be used at model training  (numerical e categorical). It is also possible to add dimensions to the images with a key/value JSON field to help searching the images.
 
-The most simple way to interact with the api is using the pumpwood communication package. It abstract most of the api comunication with simple functions, bellow there is an example of hot to create image registrations
-that can be later associated with photos using the app or web site.
+The most simple way to interact with the api is using the pumpwood communication package. It abstract most of the api comunication with simple functions, bellow there is an example of how to create image registrations that can be later associated with photos using the app or web site.
 
 ```
 from pumpwood_communication.microservices import PumpWoodMicroService
@@ -112,9 +104,7 @@ microservice.save({
 })
 ```
 
-It is also possible to list and download the images using
-the API. For more information on the APIs end-point consult
-Pumpwood Comunication documentation.
+It is also possible to list and download the images using the API. For more information on the APIs end-point consult Pumpwood Comunication documentation.
 
 ```
 file_path = "app_db/"
@@ -146,18 +136,14 @@ The web interface is based in Django Admin using [Jet extession](https://github.
 <figcaption align="center">
   <b>Django Admin used to interact with AI Photo Sampler. Experiment Team,
   teams associated with an experiment sampling; Team/User association,
-  associate a user this a team; Sampled image, register and associate
-  images</b>
+  associate a user with a team; Sampled image, register images and associate
+  photos</b>
 </figcaption>
 
 </figure>
 
-### Experiment Team
-An organization of the user in experiment teams. Each user can only be
-associated with one team. When using the app, the photos will be associated
-with with the user's team at the moment.
-
-It is possible to associate key/value dimensions for teams.
+#### Experiment Team
+An organization of the user in experiment teams. Each user can only be associated with one team. When using the app, the photos will be associated with with the user's team at the moment. It is also possible to associate key/value dimensions for teams.
 
 <figure>
 
@@ -169,12 +155,12 @@ It is possible to associate key/value dimensions for teams.
 
 </figure>
 
-### Team/User association
-Association of each user to a team. This is used to set the image team when acquiring using the mobile app, it also limit the available images to associate if taken image on app (only images from user team are available).
+#### Team/User association
+Association of each user to a team. This is used to set the image team when acquiring using the mobile app, it also limit the available images to associate image taken with app (only images from user team are available).
 
 <figure>
 
-![App Schema](docs/team_user.png?raw=true)
+![App Schema](docs/team.png?raw=true)
 
 <figcaption align="center">
   <b>Team/user edition page.</b>
@@ -182,7 +168,7 @@ Association of each user to a team. This is used to set the image team when acqu
 
 </figure>
 
-### Sampled image
+#### Sampled image
 Correspond to the sampled images, they can be uploaded using the API, Web and also by the mobile app. Teams information is automatically associated with the user's teams when an image entry is created.
 
 <figure>
@@ -215,7 +201,7 @@ It is possible to associate dimensions to the images to facilitate posterior sea
 ![App Schema](docs/photo_extra.png?raw=true)
 
 <figcaption align="center">
-  <b>General information for the photo.</b>
+  <b>Image upload and information.</b>
 </figcaption>
 
 </figure>
@@ -232,10 +218,10 @@ There is a bash script that helps to deploy test environment locally `test-aux/d
 Kubernets is the most simple way to deploy AI Photo Sampler on cloud. It is important to map a disk to `STORAGE_LOCAL_PATH`
 variable or set for google bucket or aws s3 as storage back end.
 
-Deploy using local directory:
+<b>Deploy using local directory:</b>
 ```
 pumpwood-auth-app:
-  image: andrebaceti/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
+  image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
   environment:
     - STORAGE_TYPE=local
     - STORAGE_LOCAL_PATH=media/
@@ -246,21 +232,25 @@ pumpwood-auth-app:
     - test-media-volume:/django/media/
 ```
 
-Deploy using AWS S3:
+<b>Deploy using AWS S3:</b>
 ```
 pumpwood-auth-app:
-  image: andrebaceti/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
+  image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
   environment:
     - STORAGE_TYPE=aws_s3
     - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
     - STORAGE_BUCKET_NAME=$STORAGE_BUCKET_NAME
+
+  # Have to map the google credential file to the container
+  volumes:
+    - test-bucket-config:/etc/secrets/
 ```
 
-Deploy using google bucket:
+<b>Deploy using google bucket:</b>
 ```
 pumpwood-auth-app:
-  image: andrebaceti/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
+  image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
   environment:
     - STORAGE_TYPE=google_bucket
     - STORAGE_BUCKET_NAME=$STORAGE_BUCKET_NAME

@@ -19,7 +19,7 @@ It is implemented using Django admin, and can be accessed using path `admin/pump
 </figure>
 
 ## API
-The API can be used to register the photos that will be taken at some experiment prior to the acquisition. This helps to better organize the image sampling and also add extra information that can be used at model training  (numerical e categorical). It is also possible to add dimensions to the images with a key/value JSON field to help searching the images.
+The API can be used to register the photos that will be  at some experiment prior to the acquisition. This helps to better organize the image sampling and also add extra information that can be used at model training  (numerical e categorical). It is also possible to add dimensions to the images with a key/value JSON field to help searching the images.
 
 The most simple way to interact with the api is using the pumpwood communication package. It abstract most of the api comunication with simple functions, bellow there is an example of how to create image registrations that can be later associated with photos using the app or web site.
 
@@ -241,10 +241,6 @@ pumpwood-auth-app:
     - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
     - STORAGE_BUCKET_NAME=$STORAGE_BUCKET_NAME
-
-  # Have to map the google credential file to the container
-  volumes:
-    - test-bucket-config:/etc/secrets/
 ```
 
 <b>Deploy using google bucket:</b>

@@ -255,10 +255,6 @@ pumpwood-auth-app:
     - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
     - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
     - STORAGE_BUCKET_NAME=$STORAGE_BUCKET_NAME
-
-  # Have to map the google credential file to the container
-  volumes:
-    - test-bucket-config:/etc/secrets/
 ```
 
 Deploy using google bucket:

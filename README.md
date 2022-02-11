@@ -7,16 +7,16 @@ and can be download thought the [Google Store (soon)]().
 # Usage
 It is implemented using Django admin, and can be accessed using path `admin/pumpwood-auth-app/gui/`. Pumpwood is a web development framework created by Murabei, and helps to standardize the microservice communication (that is why the path...). It is possible to interact with the Photo Sampler using API, Web Interface and the App.
 
-<figure align="center">
-
-![App Schema](docs/app_schema.png?raw=true)
+<p align = "center">
+  ![App Schema](docs/app_schema.png?raw=true)
+</p>
 
 <figcaption align = "center">
   <b>AI Photo Sampler can be used thought api, web interface and using an Android app.</b>
 </figcaption>
 
 
-</figure>
+
 
 ## API
 The API can be used to register the photos that will be  at some experiment prior to the acquisition. This helps to better organize the image sampling and also add extra information that can be used at model training  (numerical e categorical). It is also possible to add dimensions to the images with a key/value JSON field to help searching the images.

@@ -174,7 +174,7 @@ Association of each user to a team. This is used to set the image team when acqu
 
 <figure>
 
-![App Schema](docs/team.png?raw=true)
+![App Schema](docs/team_user.png?raw=true)
 
 <figcaption align="center">
   <b>Team/user edition page.</b>

@@ -1,0 +1,33 @@
+# Database
+export DB_HOST="0.0.0.0"
+export DB_PORT="7000"
+export DB_NAME="pumpwood"
+export DB_USERNAME="pumpwood"
+export DB_PASS="pumpwood"
+
+# RabbitMQ
+export RABBITMQ_USERNAME="pumpwood"
+export RABBITMQ_PASSWORD="pumpwood"
+export RABBITMQ_HOST="0.0.0.0"
+export RABBITMQ_PORT="5672"
+
+# Kong Config
+export SERVICE_URL="http://pumpwood-auth-app:5000/"
+export API_GATEWAY_URL="http://0.0.0.0:8001/"
+export AUTH_STATIC_SERVICE="http://0.0.0.0:8080/"
+
+# Client microservice
+export MICROSERVICE_URL="http://0.0.0.0:8080/"
+export MICROSERVICE_USERNAME=""
+export MICROSERVICE_PASSWORD=""
+
+#######################
+# Server microservice #
+export STORAGE_BASE_PATH='pumpwood_auth'
+export STORAGE_TYPE='google_bucket'
+export STORAGE_BUCKET_NAME='oms--dados-app-tests'
+export GOOGLE_APPLICATION_CREDENTIALS=""
+
+# Django Config
+export DEBUG="True"
+export CLOUD="False"

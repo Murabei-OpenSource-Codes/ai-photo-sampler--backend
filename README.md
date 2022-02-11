@@ -152,7 +152,7 @@ The web interface is based in Django Admin using [Jet extession](https://github.
 
 </figure>
 
-#### Experiment Team
+### Experiment Team
 An organization of the user in experiment teams. Each user can only be
 associated with one team. When using the app, the photos will be associated
 with with the user's team at the moment.
@@ -169,7 +169,7 @@ It is possible to associate key/value dimensions for teams.
 
 </figure>
 
-#### Team/User association
+### Team/User association
 Association of each user to a team. This is used to set the image team when acquiring using the mobile app, it also limit the available images to associate if taken image on app (only images from user team are available).
 
 <figure>
@@ -182,7 +182,7 @@ Association of each user to a team. This is used to set the image team when acqu
 
 </figure>
 
-#### Sampled image
+### Sampled image
 Correspond to the sampled images, they can be uploaded using the API, Web and also by the mobile app. Teams information is automatically associated with the user's teams when an image entry is created.
 
 <figure>

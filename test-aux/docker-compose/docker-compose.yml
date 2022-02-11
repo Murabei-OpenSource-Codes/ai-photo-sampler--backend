@@ -38,7 +38,7 @@ services:
   #####################
   # Auth Microservice #
   test-db-pumpwood-auth:
-    image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/test-db-ai-photo-sampler:$TEST_DB_PUMPWOOD_AUTH
+    image: andrebaceti/test-db-ai-photo-sampler:$TEST_DB_PUMPWOOD_AUTH
     ports:
       - 7000:5432
     shm_size: 512mb
@@ -48,7 +48,7 @@ services:
       - SERVICE_URL=http://test-db-pumpwood-auth:5000/
 
   pumpwood-auth-app:
-    image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
+    image: andrebaceti/ai-photo-sampler-app:$PUMPWOOD_AUTH_APP
 
   pumpwood-auth-admin-static:
-    image: southamerica-east1-docker.pkg.dev/serene-boulder-340918/private-images/ai-photo-sampler-static:$PUMPWOOD_AUTH_STATIC
+    image: andrebaceti/ai-photo-sampler-static:$PUMPWOOD_AUTH_STATIC

@@ -4,7 +4,7 @@ from django.utils import timezone
 from pumpwood_communication.serializers import PumpWoodJSONEncoder
 from pumpwood_communication.exceptions import PumpWoodActionArgsException
 from django.conf import settings
-from pumpwood_viewutils.action import action
+from pumpwood_djangoviews.action import action
 from core.singletons import storage_object, base_path
 from experiment.models import DescriptionExperimentTeam
 
@@ -39,7 +39,7 @@ class DescriptionImage(models.Model):
         null=False, default="", blank=True,
         verbose_name="Notes", help_text="Notes about the photo")
 
-    dimension = models.JSONField(
+    dimentions = models.JSONField(
         encoder=PumpWoodJSONEncoder, null=False, default=dict,
         blank=True, verbose_name="Dimentions",
         help_text="Key/Value Dimentions")

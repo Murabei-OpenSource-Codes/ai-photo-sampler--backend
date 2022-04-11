@@ -2,8 +2,8 @@
 import os
 from pumpwood_communication.microservices import PumpWoodMicroService
 from pumpwood_kong.kong import KongManagement
-from pumpwood_flaskmisc.storage import PumpWoodStorage
-from pumpwood_flaskmisc.rabbitmq import PumpWoodRabbitMQ
+from pumpwood_miscellaneous.storage import PumpWoodStorage
+from pumpwood_miscellaneous.rabbitmq import PumpWoodRabbitMQ
 
 ###############################
 # Microsservice configuration #

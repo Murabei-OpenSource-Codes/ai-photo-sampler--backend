@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
-from pumpwood_viewutils.serializers import (
+from pumpwood_djangoviews.serializers import (
     ClassNameField, CustomNestedSerializer, DynamicFieldsModelSerializer)
 from experiment.models import DescriptionExperimentTeam
 

@@ -32,8 +32,8 @@ urlpatterns = [
         lambda r: JsonResponse(True, safe=False)),
 
     # Registration end-points
-    url(r'^rest/', include('pumpwood_django_auth.registration.urls')),
-    url(r'^rest/', include('pumpwood_django_auth.system.urls')),
+    url(r'^rest/', include('pumpwood_djangoauth.registration.urls')),
+    url(r'^rest/', include('pumpwood_djangoauth.system.urls')),
 
     # Models
     url(r'^rest/', include('photo.urls')),

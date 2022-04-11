@@ -1,7 +1,7 @@
 """View for photo end-point."""
 import base64
 from django.utils import timezone
-from pumpwood_viewutils.views import PumpWoodRestService
+from pumpwood_djangoviews.views import PumpWoodRestService
 from photo.serializers import SerializerDescriptionImage
 from photo.models import DescriptionImage
 from rest_framework.response import Response

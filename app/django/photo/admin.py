@@ -35,7 +35,7 @@ class EmptyFileFilter(SimpleListFilter):
 class DescriptionImageForm(forms.ModelForm):
     class Meta:
         widgets = {
-            'dimension': FlatJsonWidget,
+            'dimensions': FlatJsonWidget,
             'extra_info': FlatJsonWidget,
         }
 
@@ -67,7 +67,7 @@ class DescriptionImageAdmin(admin.ModelAdmin):
                 "image_uploaded_at", "image_created_by")}],
         ['Dimentions/Extra Info.', {
             'fields': (
-                "dimension", "extra_info",)}],
+                "dimensions", "extra_info",)}],
     ]
 
     def save_model(self, request, obj, form, change):

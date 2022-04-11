@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import sys
 from django.core.wsgi import get_wsgi_application
-from pumpwood_django_auth.kong.create_routes import register_auth_kong_objects
+from pumpwood_djangoauth.kong.create_routes import register_auth_kong_objects
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Django Pumpwood Auth Models
-    'pumpwood_django_auth.registration',
-    'pumpwood_django_auth.system',
+    'pumpwood_djangoauth.registration',
+    'pumpwood_djangoauth.system',
 
     # Models
     'photo',
@@ -191,9 +191,9 @@ if is_cloud_deploy:
         print("#########################################")
         get_wsgi_application()
 
-        from pumpwood_django_auth.system.views import (
+        from pumpwood_djangoauth.system.views import (
             RestKongRoute, RestKongService)
-        from pumpwood_django_auth.registration.views import RestUser
+        from pumpwood_djangoauth.registration.views import RestUser
 
         # Views from models
         from experiment.rest import RestDescriptionExperimentTeam

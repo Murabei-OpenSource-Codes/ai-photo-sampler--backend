@@ -1,7 +1,7 @@
 """View for photo end-point."""
 import base64
 import datetime
-from pumpwood_viewutils.views import PumpWoodRestService
+from pumpwood_djangoviews.views import PumpWoodRestService
 from experiment.serializers import DescriptionExperimentTeamSerializer
 from experiment.models import DescriptionExperimentTeam
 from rest_framework.response import Response

@@ -7,7 +7,7 @@ from flat_json_widget.widgets import FlatJsonWidget
 class DescriptionExperimentTeamForm(forms.ModelForm):
     class Meta:
         widgets = {
-            'dimension': FlatJsonWidget
+            'dimensions': FlatJsonWidget
         }
 
 
@@ -27,7 +27,7 @@ class DescriptionExperimentTeamAdmin(admin.ModelAdmin):
                 "description", "notes", 'created_by', 'created_at')}],
         ['Dimentions/Extra Info.', {
             'fields': (
-                "dimension",)}],
+                "dimensions",)}],
     ]
 
 

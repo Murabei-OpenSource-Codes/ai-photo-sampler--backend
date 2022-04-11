@@ -11,10 +11,10 @@ from pumpwood_communication.exceptions import PumpWoodForbidden
 microservice = PumpWoodMicroService(
     name="test_microservice", server_url="http://localhost:8000/")
 auth_header = {
-    'Authorization': 'Token df1ccc89fcaa1d7fd0f13382577e34d3d6db1b4a'}
+    'Authorization': 'Token 3f547e9b19c448189b69fa254f555c9df0774358'}
 local_path = "photo/tests/%s"
 user_1_token = {
-    'Authorization': 'Token b5ad834fe466605502b2f9f3e98363bfcdd208c4'}
+    'Authorization': 'Token 67f1b127fbde50e8779d6eb1b815608133c65fe5'}
 
 
 class TestDescriptionImage(unittest.TestCase):
@@ -41,6 +41,10 @@ class TestDescriptionImage(unittest.TestCase):
 
     def test__list(self):
         """Test if fill end-point is ok."""
+
+        all_teams = microservice.list_without_pag(
+            model_class="DescriptionExperimentTeam", auth_header=auth_header)
+
         list_results = microservice.list(
             "DescriptionImage", auth_header=auth_header)
         results = pd.DataFrame(list_results)

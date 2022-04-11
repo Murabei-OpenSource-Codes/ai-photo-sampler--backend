@@ -41,14 +41,22 @@ class TestDescriptionImage(unittest.TestCase):
 
     def test__list(self):
         """Test if fill end-point is ok."""
-
         all_teams = microservice.list_without_pag(
             model_class="DescriptionExperimentTeam", auth_header=auth_header)
+        teams_id = [x["pk"] for x in all_teams]
 
+        # Check if query with teams return the data for superuser
+        list_results = microservice.list(
+            "DescriptionImage", filter_dict={
+                "team_id__in": teams_id
+            }, auth_header=auth_header)
+        self.assertTrue(len(list_results) != 0)
+
+        # Check query with out teams, not return since user is not associated
+        # with a team
         list_results = microservice.list(
             "DescriptionImage", auth_header=auth_header)
-        results = pd.DataFrame(list_results)
-        self.assertTrue(results["team_id"].isna().all())
+        self.assertTrue(len(list_results) == 0)
 
         list_results = microservice.list(
             "DescriptionImage", exclude_dict={
@@ -61,24 +69,32 @@ class TestDescriptionImage(unittest.TestCase):
         results = pd.DataFrame(list_results)
         self.assertTrue((results["team_id"] == 1).all())
 
+        # ignore team_id if user is not superuser
         list_results = microservice.list(
             "DescriptionImage", filter_dict={
                 "team_id": 2}, auth_header=user_1_token)
+        self.assertTrue(len(list_results) != 0)
         results = pd.DataFrame(list_results)
         self.assertTrue((results["team_id"] == 1).all())
 
     def test__list_without_pag(self):
         """Test if fill end-point is ok."""
+        all_teams = microservice.list_without_pag(
+            model_class="DescriptionExperimentTeam", auth_header=auth_header)
+        teams_id = [x["pk"] for x in all_teams]
+
+        # Check if query with teams return the data for superuser
+        list_results = microservice.list_without_pag(
+            "DescriptionImage", filter_dict={
+                "team_id__in": teams_id
+            }, auth_header=auth_header)
+        self.assertTrue(len(list_results) != 0)
+
+        # Check query with out teams, not return since user is not associated
+        # with a team
         list_results = microservice.list_without_pag(
             "DescriptionImage", auth_header=auth_header)
-        results = pd.DataFrame(list_results)
-        self.assertTrue(results["team_id"].isna().all())
-
-        list_results = microservice.list_without_pag(
-            "DescriptionImage", exclude_dict={
-                "team_id": None}, auth_header=auth_header)
-        results = pd.DataFrame(list_results)
-        self.assertTrue(not results["team_id"].isna().any())
+        self.assertTrue(len(list_results) == 0)
 
         list_results = microservice.list_without_pag(
             "DescriptionImage", auth_header=user_1_token)
@@ -89,14 +105,22 @@ class TestDescriptionImage(unittest.TestCase):
             "DescriptionImage", filter_dict={
                 "team_id": 2}, auth_header=user_1_token)
         results = pd.DataFrame(list_results)
+        self.assertTrue(len(list_results) != 0)
+        results = pd.DataFrame(list_results)
         self.assertTrue((results["team_id"] == 1).all())
 
     def test__retrieve(self):
         """Test if fill end-point is ok."""
-        file_not_null = microservice.retrieve(
-            "DescriptionImage", pk=124, auth_header=auth_header)
         file_null = microservice.retrieve(
-            "DescriptionImage", pk=1, auth_header=auth_header)
+            "DescriptionImage", pk=50, auth_header=auth_header)
+        file_not_null = microservice.retrieve(
+            "DescriptionImage", pk=51, auth_header=auth_header)
+
+        file_null = microservice.retrieve(
+            "DescriptionImage", pk=50, auth_header=user_1_token)
+        with self.assertRaises(PumpWoodForbidden):
+            file_not_null = microservice.retrieve(
+                "DescriptionImage", pk=51, auth_header=user_1_token)
 
     def test__save_no_photo(self):
         """Test if fill end-point is ok."""
@@ -105,14 +129,12 @@ class TestDescriptionImage(unittest.TestCase):
         description = "app_label-12345"
         notes = "notes app_label-12345"
 
-        with self.assertRaises(PumpWoodForbidden) as context:
-            new_object = microservice.save({
-                "model_class": "DescriptionImage",
-                "description": description,
-                "notes": notes}, auth_header=auth_header)
-        self.assertIn(
-            'User is not associated with a team',
-            context.exception.message)
+        new_object = microservice.save({
+            "model_class": "DescriptionImage",
+            "description": description,
+            "notes": notes,
+            "team_id": 1}, auth_header=auth_header)
+        self.assertEqual(new_object["team_id"], 1)
 
         description = "user 1 app_label-12345"
         notes = "notes app_label-12345"
@@ -123,7 +145,7 @@ class TestDescriptionImage(unittest.TestCase):
 
         self.assertEqual(new_object["image_created_at"], None)
         self.assertEqual(new_object["image_created_by_id"], None)
-        self.assertEqual(new_object["obj_created_by"], 1)
+        self.assertEqual(new_object["obj_created_by_id"], 2)
         self.assertNotEqual(new_object["obj_created_at"], None)
         self.assertEqual(new_object["description"], description)
         self.assertEqual(new_object["notes"], notes)
@@ -141,7 +163,7 @@ class TestDescriptionImage(unittest.TestCase):
 
         self.assertEqual(new_object["image_created_at"], None)
         self.assertEqual(new_object["image_created_by_id"], None)
-        self.assertEqual(new_object["obj_created_by"], 3)
+        self.assertEqual(new_object["obj_created_by_id"], 1)
         self.assertNotEqual(new_object["obj_created_at"], None)
         self.assertEqual(new_object["description"], description)
         self.assertEqual(new_object["notes"], notes)
@@ -170,7 +192,7 @@ class TestDescriptionImage(unittest.TestCase):
         self.assertEqual(new_object["image_created_at"], None)
         self.assertNotEqual(new_object["image_created_by_id"], None)
         self.assertNotEqual(new_object["image_uploaded_at"], None)
-        self.assertEqual(new_object["obj_created_by"], 1)
+        self.assertEqual(new_object["obj_created_by_id"], 2)
         self.assertEqual(new_object["team_id"], 1)
         self.assertNotEqual(new_object["obj_created_at"], None)
         self.assertEqual(new_object["description"], description)

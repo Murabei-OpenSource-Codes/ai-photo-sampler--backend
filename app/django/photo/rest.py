@@ -24,7 +24,7 @@ class RestDescriptionImage(PumpWoodRestService):
         'file': ["jpeg", "jpg"]}
     list_fields = [
         "pk", "model_class", "hash", "app_label", "description", "notes",
-        "dimentions", "file", "image_created_at", "image_uploaded_at",
+        "dimensions", "file", "image_created_at", "image_uploaded_at",
         "image_created_by", "obj_created_at", "obj_created_by_id", "team_id",
         "inactive"]
 

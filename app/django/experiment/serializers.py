@@ -16,7 +16,7 @@ class DescriptionExperimentTeamSerializer(DynamicFieldsModelSerializer):
     class Meta:
         model = DescriptionExperimentTeam
         fields = (
-            'pk', 'model_class', 'description', 'notes', 'dimentions',
+            'pk', 'model_class', 'description', 'notes', 'dimensions',
             'created_by', 'created_at')
         read_only_fields = ['created_by', 'created_at']
 

@@ -39,7 +39,7 @@ class DescriptionImage(models.Model):
         null=False, default="", blank=True,
         verbose_name="Notes", help_text="Notes about the photo")
 
-    dimentions = models.JSONField(
+    dimensions = models.JSONField(
         encoder=PumpWoodJSONEncoder, null=False, default=dict,
         blank=True, verbose_name="Dimentions",
         help_text="Key/Value Dimentions")

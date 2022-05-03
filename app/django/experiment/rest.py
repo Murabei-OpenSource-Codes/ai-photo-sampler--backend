@@ -23,7 +23,7 @@ class RestDescriptionExperimentTeam(PumpWoodRestService):
     file_fields = {
         'file': ["jpeg", "jpg"]}
     list_fields = [
-        "pk", "model_class", "description", "notes", "dimentions",
+        "pk", "model_class", "description", "notes", "dimensions",
         "created_by", "created_at"]
 
     foreign_keys = {

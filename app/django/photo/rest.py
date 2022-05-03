@@ -24,7 +24,7 @@ class RestDescriptionImage(PumpWoodRestService):
         'file': ["jpeg", "jpg"]}
     list_fields = [
         "pk", "model_class", "hash", "app_label", "description", "notes",
-        "dimentions", "file", "image_created_at", "image_uploaded_at",
+        "dimensions", "file", "image_created_at", "image_uploaded_at",
         "image_created_by", "obj_created_at", "obj_created_by_id", "team_id",
         "inactive"]
 
@@ -152,3 +152,34 @@ class RestDescriptionImage(PumpWoodRestService):
         object_data = self.serializer(obj).data
         return Response(
             object_data, status=response.status_code)
+
+    def retrieve(self, request, pk=None):
+        if pk is not None:
+            # Check if user have access
+            is_superuser = request.user.is_superuser
+            if not is_superuser:
+                profile_team_id = request.user.experiment_team.team_id
+                obj = DescriptionImage.objects.get(id=pk)
+                if obj.team_id != profile_team_id:
+                    raise PumpWoodForbidden(
+                        message=(
+                            "User is not associated with image team and "
+                            "not superuser."))
+        return super(
+            RestDescriptionImage, self).retrieve(request, pk)
+
+    def retrieve_file(self, request, pk: int):
+        if pk is not None:
+            # Check if user have access
+            is_superuser = request.user.is_superuser
+            if not is_superuser:
+                profile_team_id = request.user.experiment_team.team_id
+                obj = DescriptionImage.objects.get(id=pk)
+                if obj.team_id != profile_team_id:
+                    raise PumpWoodForbidden(
+                        message=(
+                            "User is not associated with image team and "
+                            "not superuser."))
+
+        return super(
+            RestDescriptionImage, self).retrieve_file(request, pk)

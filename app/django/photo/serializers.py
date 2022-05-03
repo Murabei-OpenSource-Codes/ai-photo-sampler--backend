@@ -17,7 +17,7 @@ class SerializerDescriptionImage(DynamicFieldsModelSerializer):
         model = DescriptionImage
         fields = (
             'pk', 'model_class', 'hash', 'app_label', 'description', 'notes',
-            'dimentions', 'extra_info', 'file', 'image_created_at',
+            'dimensions', 'extra_info', 'file', 'image_created_at',
             'image_uploaded_at', 'image_created_by_id', 'obj_created_at',
             'obj_created_by_id', 'team_id', 'inactive')
         read_only_fields = ['obj_created_by_id', 'obj_created_at']

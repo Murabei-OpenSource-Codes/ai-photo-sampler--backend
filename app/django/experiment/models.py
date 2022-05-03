@@ -13,7 +13,7 @@ class DescriptionExperimentTeam(models.Model):
     description = models.CharField(
         max_length=154, unique=False, blank=True, null=True)
     notes = models.TextField(null=False, default="", blank=True)
-    dimentions = models.JSONField(
+    dimensions = models.JSONField(
         encoder=PumpWoodJSONEncoder, null=False, default=dict,
         blank=True)
     created_by = models.ForeignKey(

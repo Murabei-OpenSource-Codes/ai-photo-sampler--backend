@@ -249,7 +249,7 @@ if is_cloud_deploy:
                 "icon": "",
                 "extra_info": {}
             }, {  # Admin
-                "route_url": "/admin/pumpwood-auth-app/",
+                "route_url": "/admin/pumpwood-auth-app/gui/",
                 "route_name": "admin--pumpwood-auth-app",
                 "route_type": "admin",
                 "description": "Pumpwood Auth Admin",
@@ -282,8 +282,8 @@ if is_cloud_deploy:
             service_extra_info={},
             routes=[{
                 # Admin static files
-                "route_url": "/static/pumpwood-auth-app/",
-                "route_name": "static--pumpwood-auth-app",
+                "route_url": "/admin/pumpwood-auth-app/static/",
+                "route_name": "static--pumpwood-auth",
                 "route_type": "static",
                 "description": "Pumpwood Auth Admin Static Files",
                 "notes": (
@@ -291,7 +291,7 @@ if is_cloud_deploy:
                 "dimensions": {
                     "microservice": "pumpwood-auth-app",
                     "service_type": "core",
-                    "function": "static",
+                    "function": "gui",
                     "route_type": "static"},
                 "icon": "",
                 "extra_info": {}

@@ -17,7 +17,7 @@ ENV DB_USERNAME="pumpwood"
 ENV DB_PASSWORD="pumpwood"
 ENV DB_HOST="test-db-pumpwood-auth"
 ENV DB_PORT="5432"
-ENV N_WORKERS="20"
+ENV N_WORKERS="10"
 ENV SIGNUP = "FALSE"
 
 # Microservice

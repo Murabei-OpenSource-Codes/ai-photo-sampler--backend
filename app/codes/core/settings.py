@@ -210,7 +210,7 @@ if is_cloud_deploy:
             service_description="Pumpwood Auth APP",
             service_notes=(
                 "Main app for authentication."),
-            service_dimentions={
+            service_dimensions={
                 "microservice": "pumpwood-auth-app",
                 "type": "core",
                 "function": "authentication"},
@@ -224,7 +224,7 @@ if is_cloud_deploy:
                 "notes": (
                     "End-point for login, logout and other Authentication "
                     "functions"),
-                "dimentions": {
+                "dimensions": {
                     "microservice": "pumpwood-auth-app",
                     "service_type": "core",
                     "function": "authentication",
@@ -240,7 +240,7 @@ if is_cloud_deploy:
                 "notes": (
                     "System related end-points to list Kong routes, and "
                     "dummy-calls"),
-                "dimentions": {
+                "dimensions": {
                     "microservice": "pumpwood-auth-app",
                     "service_type": "core",
                     "function": "system",
@@ -255,7 +255,7 @@ if is_cloud_deploy:
                 "description": "Pumpwood Auth Admin",
                 "notes": (
                     "Admin for pumpwood-auth-app microservice."),
-                "dimentions": {
+                "dimensions": {
                     "microservice": "pumpwood-auth-app",
                     "service_type": "core",
                     "function": "gui",
@@ -274,7 +274,7 @@ if is_cloud_deploy:
             service_description="Authentication Microservice Static Files",
             service_notes=(
                 "Static files for Pumpwood Auth Admin"),
-            service_dimentions={
+            service_dimensions={
                 "microservice": "pumpwood-auth-app",
                 "type": "static",
                 "function": "authentication"},
@@ -288,7 +288,7 @@ if is_cloud_deploy:
                 "description": "Pumpwood Auth Admin Static Files",
                 "notes": (
                     "Static files for pumpwood-auth-app microservice admin."),
-                "dimentions": {
+                "dimensions": {
                     "microservice": "pumpwood-auth-app",
                     "service_type": "core",
                     "function": "static",

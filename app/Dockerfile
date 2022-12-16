@@ -52,7 +52,7 @@ RUN pip3 install --no-cache-dir -r /requirements.txt
 RUN apt-get update
 RUN apt-get install -y postgresql-client
 
-COPY django /django
-WORKDIR /django/
+COPY codes /codes
+WORKDIR /codes/
 
-CMD ["bash", "/django/start_server.sh"]
+CMD ["bash", "/codes/start_server.sh"]

@@ -24,12 +24,12 @@ Werkzeug==1.0.1
 https://github.com/Murabei-OpenSource-Codes/pumpwood-kong/archive/refs/tags/0.1.zip
 
 # General Packages
-https://github.com/Murabei-OpenSource-Codes/pumpwood-communication/archive/refs/tags/0.71.zip
-https://github.com/Murabei-OpenSource-Codes/pumpwood-miscellaneous/archive/refs/tags/0.6.zip
+https://github.com/Murabei-OpenSource-Codes/pumpwood-communication/archive/refs/tags/0.86.zip
+https://github.com/Murabei-OpenSource-Codes/pumpwood-miscellaneous/archive/refs/tags/0.7.zip
 
 # Django
-https://github.com/Murabei-OpenSource-Codes/pumpwood-djangoviews/archive/refs/tags/0.3.zip
-https://github.com/Murabei-OpenSource-Codes/pumpwood-djangoauth/archive/refs/tags/0.1.zip
+https://github.com/Murabei-OpenSource-Codes/pumpwood-djangoviews/archive/refs/tags/0.6.zip
+https://github.com/Murabei-OpenSource-Codes/pumpwood-djangoauth/archive/refs/tags/0.6.zip
 
 # Deploy
 https://github.com/Murabei-OpenSource-Codes/pumpwood-deploy/archive/refs/tags/0.0.zip

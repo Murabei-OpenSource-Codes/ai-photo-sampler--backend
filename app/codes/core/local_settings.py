@@ -2,9 +2,9 @@ import os
 
 # Os servidores locais são os end points, servem as
 # aplicações que não precisam de outros servidores
-django_db_name = os.environ.get('DB_NAME')
+django_db_name = os.environ.get('DB_DATABASE')
 django_db_username = os.environ.get('DB_USERNAME')
-django_db_pass = os.environ.get('DB_PASS')
+django_db_pass = os.environ.get('DB_PASSWORD')
 django_db_host = os.environ.get('DB_HOST')
 django_db_port = os.environ.get('DB_PORT')
 
@@ -43,7 +43,6 @@ if storage_type == "aws_s3":
         '{aws_storage_bucket_name}.s3.amazonaws.com').format(
             aws_storage_bucket_name=AWS_STORAGE_BUCKET_NAME)
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/"
-
 elif storage_type == "google_bucket":
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     GS_BUCKET_NAME = os.environ.get('STORAGE_BUCKET_NAME')

@@ -11,12 +11,14 @@ ENV CLOUD="TRUE"
 ENV PYTHONUNBUFFERED="1"
 
 # Database
-ENV DB_NAME="pumpwood"
+ENV PGSSLMODE="allow"
+ENV DB_DATABASE="pumpwood"
 ENV DB_USERNAME="pumpwood"
-ENV DB_PASS="pumpwood"
+ENV DB_PASSWORD="pumpwood"
 ENV DB_HOST="test-db-pumpwood-auth"
 ENV DB_PORT="5432"
-ENV N_WORKERS="4"
+ENV N_WORKERS="20"
+ENV SIGNUP = "FALSE"
 
 # Microservice
 ENV MICROSERVICE_NAME='microservice-auth'
